@@ -15,8 +15,8 @@ class PostDataSource {
     );
     final response = await http.get(uri);
     if (response.statusCode == 200) {
-      final List<dynamic> posts = jsonDecode(response.body);
-      return posts.map((post) => PostModel.fromJson(post)).toList();
+      final List<dynamic> postsJson = jsonDecode(response.body);
+      return postsJson.map((post) => PostModel.fromJson(post)).toList();
     }
     throw Exception("Failed to load posts from user $userId.");
   }
